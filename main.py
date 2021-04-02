@@ -1,15 +1,18 @@
 from Dice import Dice
+from sys import argv
 from Pig import Pig
+
+replay = True
 
 
 def main():
-    game = Pig(goal=20)
+    game = Pig(player_count=int(argv[1]) if int(argv[1]) > 1 else 2)
     die = Dice()
 
     # First-time setup for game
     game.show_welcome()
     print(f"{game.players[0].name}'s turn! They have {game.players[0].total_score} points")
-    play(game, die)
+    play(game, die, game.player_count)
 
 
 def play(game, dice, player_count=2):
@@ -21,7 +24,7 @@ def play(game, dice, player_count=2):
 
         # Turn continues
         if valid:
-            inp = input("(R)oll or (H)old? ").lower()
+            inp = input("(R)oll or (h)old? ")
             if inp == 'r':
                 roll = dice.roll()[0]
                 print(f"{active_player.name} rolled {roll}")
@@ -39,6 +42,10 @@ def play(game, dice, player_count=2):
             valid = True
         game.active = False if game.check_player_won(active_player) else game.active
 
+    global replay
+    replay = True if input("Play again (y/n)? ") is "y" else False
+
 
 if __name__ == '__main__':
-    main()
+    while replay:
+        main()

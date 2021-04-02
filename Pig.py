@@ -13,16 +13,6 @@ class Pig:
         self.players = [Player(name) for name in self.names]
         self.active = True
 
-    # # Check player's score, player must be an int
-    # # We don't call this if we rolled a 1 because nothing changes
-    # def check_score(self, player, round_score):
-    #     if self.players[player].total_score >= self.goal:
-    #         self.players[player].add_score(round_score)
-    #         self.active = False
-    #         # Game over, this player won
-    #     else:
-    #         self.players[player].add_score(round_score)
-
     # Determine what to do based on the player's roll
     # Roll is valid if it can continue round, >1
     # Roll is invalid if it ends round, ==1
