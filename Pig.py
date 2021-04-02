@@ -36,8 +36,14 @@ class Pig:
         player.reset_score()
 
     # Show the game/instructions ("Welcome Screen")
-    def show_welcome(self):
-        pass
+    @staticmethod
+    def show_welcome():
+        print("The game works this way. The player has a choice to roll or hold.\n"
+              "If the player rolls a number different than 1, the number is added\n"
+              "to a running turn total. If the player says h (old), the turn total\n"
+              "is added to the player's total and the turn moves to the next player.\n"
+              "If the player rolls a 1, the turn total is set to zero, nothing\n"
+              "is added to the player's total and the turn moves to the next player.\n")
 
     # Get a player
     # Takes indice (int) or name (str)

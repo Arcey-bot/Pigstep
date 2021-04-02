@@ -6,7 +6,7 @@ replay = True
 
 
 def main():
-    game = Pig(player_count=int(argv[1]) if int(argv[1]) > 1 else 2)
+    game = Pig(int(argv[1]) if valid_cmd_args(argv) else 2)
     die = Dice()
 
     # First-time setup for game
@@ -44,6 +44,16 @@ def play(game, dice, player_count=2):
 
     global replay
     replay = True if input("Play again (y/n)? ") is "y" else False
+
+
+# Check cmd arguments, return a valid number
+def valid_cmd_args(args):
+    # A argument we care about was passed in
+    if len(args) > 1:
+        # Is it a valid number
+        if int(args[1]) > 1:
+            return True
+    return False
 
 
 if __name__ == '__main__':
